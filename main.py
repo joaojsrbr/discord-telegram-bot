@@ -47,8 +47,13 @@ async def on_message(message):
             
            
 
+            mensagem_tirar = ["<@&553402160378019852>"," <@&952270033961242644>", "<@&870312799191072839>", "<@&952270033961242644>","<@&553402160378019852>","<@&867800588041453583>","<@&867800588041453583>","<@&553402160378019852>" ]
+            for i in range(0,int (len(mensagem_tirar))):
+                messagefi1 = re.sub(mensagem_tirar[i],'',message.content)
+
+            messagefi1 = re.sub('<#826944584524234754>' ,'#tags',message.content)
             
-            tg.sendMessage(TELEGRAM_CHAT_ID, message.content + "\n"  + manga_caplk(all) )
+            tg.sendMessage(TELEGRAM_CHAT_ID, messagefi1 + "\n"  + manga_caplk(all) )
 
             
             
