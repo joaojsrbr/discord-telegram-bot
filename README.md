@@ -1,17 +1,16 @@
 # discord-telegram-bot
 **Note:**
-Automating user accounts is against the Discord ToS and puts your account at risk for deletion. This bot is a proof of concept and I do not recommend using it. Do so at your own risk.  
-
-Simple Discord to Telegram one way forwarder, designed to work with user token for channels where bots are not permitted.
+Automatizar contas de usuário é contra o Discord ToS e coloca sua conta em risco de exclusão.
+Eu não recomendo usá-lo. Faça isso por sua conta e risco.
 
 ## Prerequisites
 
 - [Python](https://www.python.org/downloads/)
-- [Docker](https://docs.docker.com/get-docker/) (If you intend on deploying the app as a Docker image)
+- [Docker](https://docs.docker.com/get-docker/) (Se você pretende implantar o aplicativo como uma imagem do Docker)
 
 ## Install
 
-There are two ways to begin using the bot, depending on your preference:
+Existem duas maneiras de começar a usar o bot, dependendo da sua preferência:
 
 ### Manual
 
@@ -33,9 +32,9 @@ docker run -d -v `pwd`/keys.py:/app/keys.py discord-telegram-bot:latest
 
 ## Configuration
 
-Before running the bot, you must first set it up so it can connect to the Discord and Telegram API. Create a keys.py file and fill in the following information:
+Antes de executar o bot, você deve primeiro configurá-lo para que ele possa se conectar à API Discord e Telegram. Crie um arquivo keys.py e preencha as seguintes informações:
 
-- `DISCORD_TOKEN`: discord user token
-- `DISCORD_CHANNELS`: channel ids to forward from
-- `TELEGRAM_TOKEN`: telegram bot token
-- `TELEGRAM_CHAT_ID`: telegram chat id to forward to
+- `DISCORD_TOKEN`: token de usuário do Discord
+- `DISCORD_CHANNELS`: IDs de canal para encaminhar
+- `TELEGRAM_TOKEN`: Token de bot do Telegram
+- `TELEGRAM_CHAT_ID`: ID do chat do Telegram para encaminhar
