@@ -3,7 +3,7 @@
 Automatizar contas de usuário é contra o Discord ToS e coloca sua conta em risco de exclusão.
 Eu não recomendo usá-lo. Faça isso por sua conta e risco.
 
-## Prerequisites
+## Pré-requisitos
 
 - [Python](https://www.python.org/downloads/)
 - [Docker](https://docs.docker.com/get-docker/) (Se você pretende implantar o aplicativo como uma imagem do Docker)
@@ -30,7 +30,7 @@ docker build -t discord-telegram-bot .
 docker run -d -v `pwd`/keys.py:/app/keys.py discord-telegram-bot:latest
 ```
 
-## Configuration
+## Configuração
 
 Antes de executar o bot, você deve primeiro configurá-lo para que ele possa se conectar à API Discord e Telegram. Crie um arquivo keys.py e preencha as seguintes informações:
 
