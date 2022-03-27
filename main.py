@@ -46,10 +46,8 @@ async def on_message(message):
                         return link
             
            
-
-            mensagem_tirar = ["<@&553402160378019852>"," <@&952270033961242644>", "<@&870312799191072839>", "<@&952270033961242644>","<@&553402160378019852>","<@&867800588041453583>","<@&867800588041453583>","<@&553402160378019852>" ]
-            for i in range(0,int (len(mensagem_tirar))):
-                messagefi1 = re.sub(mensagem_tirar[i],'',message.content)
+            for i in range(0,int (len(DISCORD_MENTIONS))):
+                messagefi1 = re.sub(DISCORD_MENTIONS[i],'',message.content)
 
             messagefi1 = re.sub('<#826944584524234754>' ,'#tags',message.content)
             
