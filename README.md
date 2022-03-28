@@ -1,8 +1,10 @@
 # discord-telegram-bot
-**Note:**
-Automatizar contas de usuário é contra o Discord ToS e coloca sua conta em risco de exclusão.
-Eu não recomendo usá-lo. Faça isso por sua conta e risco.
-
+## Note
+```
+Automatizar contas de usuário é contra o Discord ToS e coloca sua conta em risco de exclusão.  
+Eu não recomendo usá-lo. 
+Faça isso por sua conta e risco.
+```
 ## Pré-requisitos
 
 - [Python](https://www.python.org/downloads/)
