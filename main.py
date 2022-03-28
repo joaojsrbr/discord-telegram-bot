@@ -5,8 +5,11 @@ import re
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 
+
+
 dc = discord.Client()
 tg = Bot(token=TELEGRAM_TOKEN)
+
 
 def Find(string): 
   
@@ -23,15 +26,28 @@ async def on_message(message):
             attachers = ""
             for attachment in message.attachments:
                 attachers += f"{attachment} "
-            print(f'{message.content} ')
+            print(f'{message.content}')
+        
+
+           
+            
+            
+            #tg.sendMessage(TELEGRAM_CHAT_ID, messagef2 + "\n"  + manga_caplk(all) )
+
+
+            
+            
+               
+ 
+            
+
+        else:
             url = "https://neoxscans.net/?s&post_type=wp-manga&m_orderby=latest"
             headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36"}        
             req = Request(url,headers=headers)
             response = urlopen(req)
             html = response.read()
             soup = BeautifulSoup(html,'html.parser')
-
-            i=0
             for i in range(0,int (1)):
                 tabsitens = soup.find_all('div', class_="row c-tabs-item__content")
                 itens = tabsitens[i]
@@ -44,25 +60,12 @@ async def on_message(message):
                     except AttributeError:
                         link = "None"
                         return link
-            
-           
-            for i in range(0,int (len(DISCORD_MENTIONS))):
-                messagefi1 = re.sub(DISCORD_MENTIONS[i],'',message.content)
-
-            messagefi1 = re.sub('<#826944584524234754>' ,'#tags',message.content)
-            
-            tg.sendMessage(TELEGRAM_CHAT_ID, messagefi1 + "\n"  + manga_caplk(all) )
-
-            
-            
-               
- 
-            
-
-        else:
-            print(f"{message.content}")
-            tg.sendMessage(TELEGRAM_CHAT_ID, message.content)
-
+            messageb = re.sub('<@&'+ '[0-9]+' + '>','', f'{message.content}')
+            messagef2 = re.sub('<#826944584524234754>' ,'#tags',messageb)
+            messagef2 = re.sub('[**]','',messagef2)
+            #print(messagef2)
+            tg.sendMessage(TELEGRAM_CHAT_ID, messagef2 + "\n"  + manga_caplk(all) )
+        
     
 
 
