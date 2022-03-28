@@ -21,22 +21,7 @@ async def on_message(message):
     response = urlopen(req)
     html = response.read()
     soup = BeautifulSoup(html,'html.parser')
-    if message.channel.id in DISCORD_CHANNELS:
-        if message.attachments:
-            attachers = ""
-            for attachment in message.attachments:
-                attachers += f"{attachment} "
-            print(f'{message.content}')
-        
-
-           
-            
-            
-            for i in range(0,int (1)):
-                tabsitens = soup.find_all('div', class_="row c-tabs-item__content")
-                itens = tabsitens[i]
-
-                def manga_caplk(link): 
+    def manga_caplk(link): 
                     try:
                         linkk = itens.find_next('span', class_="font-meta chapter")
                         link = linkk.find_next(href=True)
@@ -44,6 +29,17 @@ async def on_message(message):
                     except AttributeError:
                         link = "None"
                         return link
+    if message.channel.id in DISCORD_CHANNELS:
+        if message.attachments:
+            attachers = ""
+            for attachment in message.attachments:
+                attachers += f"{attachment} "
+            print(f'{message.content}')
+            for i in range(0,int (1)):
+                tabsitens = soup.find_all('div', class_="row c-tabs-item__content")
+                itens = tabsitens[i]
+
+                
             messageb = re.sub('<@&'+ '[0-9]+' + '>','', f'{message.content}')
             messagef2 = re.sub('<#826944584524234754>' ,'#tags',messageb)
             messagef2 = re.sub('[**]','',messagef2)
@@ -53,27 +49,12 @@ async def on_message(message):
                 print("Enviado 1")
             except:
                 print("Não enviado 1")
-
-
-            
-            
-               
- 
-            
-
         else:
             for i in range(0,int (1)):
                 tabsitens = soup.find_all('div', class_="row c-tabs-item__content")
                 itens = tabsitens[i]
 
-                def manga_caplk(link): 
-                    try:
-                        linkk = itens.find_next('span', class_="font-meta chapter")
-                        link = linkk.find_next(href=True)
-                        return link['href']
-                    except AttributeError:
-                        link = "None"
-                        return link
+                
             messageb = re.sub('<@&'+ '[0-9]+' + '>','', f'{message.content}')
             messagef2 = re.sub('<#826944584524234754>' ,'#tags',messageb)
             messagef2 = re.sub('[**]','',messagef2)

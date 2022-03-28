@@ -1,2 +1,6 @@
 discord.py-self
 python-telegram-bot
+re
+BeautifulSoup
+urlopen
+Request
