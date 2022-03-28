@@ -38,8 +38,8 @@ async def on_message(message):
                 if re.findall('<#'+ '[0-9]+' + '>',messagefilted):
                     messagefilted = re.sub('<#'+ '[0-9]+' + '>' ,'tags',messagefilted)
                     return messagefilted
-                if re.findall('*',messagefilted):
-                    messagefilted = re.sub('*','', messagefilted)
+                if re.findall('[**]+',messagefilted):
+                    messagefilted = re.sub('[**]+','', messagefilted)
                     return messagefilted
                 else:
                     return messagefilted 
