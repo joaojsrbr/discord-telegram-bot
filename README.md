@@ -15,7 +15,7 @@ Existem duas maneiras de começar a usar o bot, dependendo da sua preferência:
 ### Manual
 
 ```bash
-git clone https://github.com/dsymbol/discord-telegram-bot
+git clone https://github.com/joaojsrbr/discord-telegram-bot.git
 cd discord-telegram-bot
 pip install -r requirements.txt
 python main.py
@@ -24,7 +24,7 @@ python main.py
 ### Docker CLI
 
 ```bash
-git clone https://github.com/dsymbol/discord-telegram-bot
+git clone https://github.com/joaojsrbr/discord-telegram-bot.git
 cd discord-telegram-bot
 docker build -t discord-telegram-bot .
 docker run -d -v `pwd`/keys.py:/app/keys.py discord-telegram-bot:latest
