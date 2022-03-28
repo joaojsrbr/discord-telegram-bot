@@ -63,7 +63,7 @@ async def on_message(message):
             messageb = re.sub('<@&'+ '[0-9]+' + '>','', f'{message.content}')
             messagef2 = re.sub('<#826944584524234754>' ,'#tags',messageb)
             messagef2 = re.sub('[**]','',messagef2)
-            #print(messagef2)
+            print(messagef2)
             tg.sendMessage(TELEGRAM_CHAT_ID, messagef2 + "\n"  + manga_caplk(all) )
         
     
