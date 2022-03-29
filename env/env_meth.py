@@ -61,15 +61,15 @@ def filtro2(filtro2):
 
 def capnumber(messagefilted1):
     try:
-        if re.findall('Capítulo [0-9]',messagefilted1):
+        if re.findall('Capítulo [0-9]+',messagefilted1):
             messagefilted1 = re.sub('Capítulo' ,'', messagefilted1)
             messagefilted1 = [int(temp)for temp in messagefilted1.split() if temp.isdigit()]
             return messagefilted1
-        if re.findall('Capítulos [0-9]',messagefilted1):
+        if re.findall('Capítulos [0-9]+',messagefilted1):
             messagefilted1 = re.sub('Capítulos' ,'', messagefilted1)
             messagefilted1 = [int(temp)for temp in messagefilted1.split() if temp.isdigit()]
             return messagefilted1
-        if re.findall('Capitulos [0-9]',messagefilted1):
+        if re.findall('Capitulos [0-9]+',messagefilted1):
             messagefilted1 = re.sub('Capitulos' ,'', messagefilted1)
             messagefilted1 = [int(temp)for temp in messagefilted1.split() if temp.isdigit()]
             return messagefilted1
@@ -82,6 +82,6 @@ def lin_new(param1,linkdefin1):
         for i in range(0,int (len(capnumber(param1)))):
             linkdefini = (f'{manga_caplk(any)}'+"/cap-" + f'{capnumber(param1)[i]}' )
             linkdefin1.extend([linkdefini])
-            return linkdefin1
+        return linkdefin1
     except:
         return linkdefin1
