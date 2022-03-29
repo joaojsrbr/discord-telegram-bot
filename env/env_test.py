@@ -24,7 +24,7 @@ async def on_message(message):
             #print("Enviado 'If': " + filtro2(message.content) + "\n" + "\n". join(link_ne))
             
             try:
-                   tg.sendMessage(TELEGRAM_CHAT_ID, filtro2(message.content) + "\n" + "\n". join(link_ne) )
+                   #tg.sendMessage(TELEGRAM_CHAT_ID, filtro2(message.content) + "\n" + "\n". join(link_ne) )
                    print("Enviado If: " + filtro2(message.content) + "\n" + "\n". join(link_ne) )
             except:
                    print("Não enviado 'If'")
@@ -36,7 +36,7 @@ async def on_message(message):
             #print("Enviado 'Else': " + filtro2(message.content) + "\n" + "\n". join(link_ne))
                         
             try:
-                   tg.sendMessage(TELEGRAM_CHAT_ID, filtro2(message.content) + "\n" + "\n". join(link_ne) )
+                   #tg.sendMessage(TELEGRAM_CHAT_ID, filtro2(message.content) + "\n" + "\n". join(link_ne) )
                    print("Enviado Else: " + filtro2(message.content) + "\n" + "\n". join(link_ne) )
             except:
                    print("Não enviado 'else'")
