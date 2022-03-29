@@ -3,3 +3,5 @@ python-telegram-bot
 regex
 BeautifulSoup
 elasticsearch
+urlopen
+Request
