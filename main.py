@@ -21,7 +21,8 @@ async def on_message(message):
     response = urlopen(req)
     html = response.read()
     soup = BeautifulSoup(html,'html.parser')
-   
+    
+
     def manga_caplk(link): 
         try:
             linkk = itens.find_next('div', class_="post-title")
@@ -32,17 +33,23 @@ async def on_message(message):
             return link
 
     def filtro(messagefilted):
+            try:
                 if re.findall('<@&'+ '[0-9]+' + '>',messagefilted):
                     messagefilted = re.sub('<@&'+ '[0-9]+' + '>','' , messagefilted)
                     return messagefilted
-                if re.findall('<#'+ '[0-9]+' + '>',messagefilted):
-                    messagefilted = re.sub('<#'+ '[0-9]+' + '>' ,'tags',messagefilted)
+                if re.findall('<#826944584524234754>',messagefilted):
+                    messagefilted = re.sub('<#826944584524234754>','tags',messagefilted)
                     return messagefilted
-                if re.findall('[**]+',messagefilted):
-                    messagefilted = re.sub('[**]+','', messagefilted)
+                if re.findall('<#956983950868377600>',messagefilted):
+                    messagefilted = re.sub('<#956983950868377600>','tags',messagefilted)
+                    return messagefilted
+                if re.findall('[**]',messagefilted):
+                    messagefilted = re.sub('[**]','', messagefilted)
                     return messagefilted
                 else:
                     return messagefilted 
+            except:
+                return messagefilted 
 
     def capnumber(messagefilted1):
         if re.findall('Capítulo [0-9]',messagefilted1):
