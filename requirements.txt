@@ -1,6 +1,5 @@
 discord.py-self
 python-telegram-bot
-re
+regex
 BeautifulSoup
-urlopen
-Request
+elasticsearch
