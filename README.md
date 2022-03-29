@@ -34,7 +34,7 @@ docker run -d -v `pwd`/keys.py:/app/keys.py discord-telegram-bot:latest
 
 ## Configuração
 
-Antes de executar o bot, você deve primeiro configurá-lo para que ele possa se conectar à API Discord e Telegram. Crie um arquivo keys.py e preencha as seguintes informações:
+Antes de executar o bot, você deve primeiro configurá-lo para que ele possa se conectar à API Discord e Telegram. Crie um arquivo ```keys.py``` e preencha as seguintes informações:
 
 - `DISCORD_TOKEN`: token de usuário do Discord
 - `DISCORD_CHANNELS`: IDs de canal para encaminhar
