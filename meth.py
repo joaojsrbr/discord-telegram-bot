@@ -3,7 +3,7 @@ from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 
 
-url = "https://neoxscans.net/?s&post_type=wp-manga&m_orderby=latest"
+url = "https://neoxscans.net"
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36"}        
 req = Request(url,headers=headers)
 response = urlopen(req)
@@ -13,16 +13,17 @@ soup = BeautifulSoup(html,'html.parser')
 
 
 def manga_itens(itens):
-    for i in range(0,int (1)):
-        tabsitens = soup.find_all('div', class_="row c-tabs-item__content")
-        itens = tabsitens[i]
-    return itens
+        tabsitens1 = soup.find('div', class_="row row-eq-height")
+        tabsitens2 = tabsitens1.find('div', class_="col-6 col-md-2 badge-pos-2")
+        tabsitens3 = tabsitens2.find('div', class_="item-thumb c-image-hover")
+        itens = tabsitens3
+        return itens
 
 def manga_caplk(link): 
         try:
-            linkk = manga_itens(all).find_next('div', class_="post-title")
-            link = linkk.find_next(href=True)
-            return link['href']
+            linkk = manga_itens(all).find('a')
+            link = linkk['href']
+            return link
         except AttributeError:
             link = "None"
             return link
@@ -42,7 +43,7 @@ def filtro(messagefilted):
                 except:
                     return messagefilted
                 try:
-                    if re.search('[**A-Z]' or '[**]',messagefilted):
+                    if re.search('[**]' or '[**]',messagefilted):
                         messagefilted = re.sub('[**]','', messagefilted)
                         return messagefilted
                 except:
@@ -57,27 +58,29 @@ def filtro2(filtro2):
         return filtro2
 
 def capnumber(messagefilted1):
+    regex = r'''
+	((Capítulo|Capítulos|Capitulo).([0-9]+.*\|))
+	'''
     try:
-        if re.findall('Capítulo [0-9]+' or 'Capítulos [0-9]+' or 'Capitulos [0-9]+',messagefilted1):
-            messagefilted1 = re.sub('Capítulo' or 'Capítulos'or 'Capitulos' ,'', messagefilted1)
-            messagefilted1 = [int(temp)for temp in messagefilted1.split() if temp.isdigit()]
-            return messagefilted1
-        if re.findall('Capítulos [0-9]+' or 'Capitulos [0-9]+',messagefilted1):
-            messagefilted1 = re.sub('Capítulos' ,'', messagefilted1)
-            messagefilted1 = [int(temp)for temp in messagefilted1.split() if temp.isdigit()]
-            return messagefilted1
-        if re.findall('Capitulos [0-9]+',messagefilted1):
-            messagefilted1 = re.sub('Capitulos' ,'', messagefilted1)
-            messagefilted1 = [int(temp)for temp in messagefilted1.split() if temp.isdigit()]
-            return messagefilted1
+        if re.finditer(regex ,messagefilted1, re.IGNORECASE | re.MULTILINE | re.VERBOSE | re.DOTALL | re.UNICODE):
+            messagefil = re.finditer(regex ,messagefilted1, re.IGNORECASE | re.MULTILINE | re.VERBOSE | re.DOTALL | re.UNICODE)
+            for matchNum, match in enumerate(messagefil, start=1):
+                messagefilted4 = ("{match}".format( match = match.group()))
+                messagefilted2 = [(temp)for temp in messagefilted4.split() if temp.isdigit()]
+            try:
+                messagefilted1 = messagefilted2
+                return messagefilted1
+            except:
+                pass
     except:
         return messagefilted1
-            
-def lin_new(param1,linkdefin1):
+
+
+def lin_new(param,linkdefin1):
     linkdefin1 = []
     try:
-        for i in range(0,int (len(capnumber(param1)))):
-            linkdefini = (f'{manga_caplk(any)}'+"/cap-" + f'{capnumber(param1)[i]}' )
+        for i in range(0,int (len(capnumber(param)))):
+            linkdefini = (f'{manga_caplk(any)}'+"/cap-" + f'{capnumber(param)[i]}' )
             linkdefin1.extend([linkdefini])
         return linkdefin1
     except:
