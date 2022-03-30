@@ -3,16 +3,16 @@ from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 from time import sleep
 
-url = "https://neoxscans.net/manga?m_orderby=latest"
-headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36"}        
-req = Request(url,headers=headers)
-response = urlopen(req)
-html = response.read()
-soup = BeautifulSoup(html,'html.parser')
-seconds = 10
 
 
 def manga_itens(itens):
+        url = "https://neoxscans.net/manga?m_orderby=latest"
+        headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36"}        
+        req = Request(url,headers=headers)
+        response = urlopen(req)
+        html = response.read()
+        soup = BeautifulSoup(html,'html.parser')
+        seconds = 10
         sleep(seconds)
         itens = soup.find('div', class_="page-content-listing item-default").find('div', class_="page-listing-item").find('div', class_="row row-eq-height").find('div', class_="col-12 col-md-6 badge-pos-2").find('div', class_="page-item-detail manga").find('h3', class_="h5").find('a')
         return itens
