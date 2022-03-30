@@ -48,7 +48,7 @@ def filtro2(filtro2):
 
 def capnumber(messagefilted1):
     regex = r'''
-	((Capítulo|Capítulos|Capitulo).([0-9]+.*\|))
+	((Capítulo|Capítulos|Capitulo).([0-9]+.*\|)|-.*[0-9]\|)
 	'''
     try:
         if re.finditer(regex ,messagefilted1, re.IGNORECASE | re.MULTILINE | re.VERBOSE | re.DOTALL | re.UNICODE):
