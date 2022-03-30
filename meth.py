@@ -10,9 +10,7 @@ response = urlopen(req)
 html = response.read()
 soup = BeautifulSoup(html,'html.parser')
 
-def find_titulo(titulo):
-        titulo = re.findall('A-Za-z *-'  ,titulo)
-        return titulo
+
 
 def manga_itens(itens):
     for i in range(0,int (1)):
