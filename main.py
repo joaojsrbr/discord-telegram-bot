@@ -16,28 +16,18 @@ async def on_message(message):
         if message.attachments:
             attachers = ""
             for attachment in message.attachments:
-                attachers += f"{attachment} "
-            print(f'{message.content}')
-                             
-            link_ne = [str(a) for a in lin_new(message.content,all)]
-        
-            #print("Enviado 'If': " + filtro2(message.content) + "\n" + "\n". join(link_ne))
+                attachers += f"{attachment}"
             
             try:
-                   tg.sendMessage(TELEGRAM_CHAT_ID, filtro2(message.content) + "\n" + "\n". join(link_ne) )
-                   print("Enviado If: " + filtro2(message.content) + "\n" + "\n". join(link_ne) )
+                   tg.send_photo(TELEGRAM_CHAT_ID,  f"{attachment}" , caption=filtro(message.content), parse_mode='Markdown' )
+                   print("Enviado F-M: " + filtro(message.content) + "\n " + f"{attachment}" )
             except:
                    print("Não enviado 'If'")
 
-        else:
-                       
-            link_ne = [str(a) for a in lin_new(message.content,all)]
-        
-            #print("Enviado 'Else': " + filtro2(message.content) + "\n" + "\n". join(link_ne))
-                        
+        else:                      
             try:
-                   tg.sendMessage(TELEGRAM_CHAT_ID, filtro2(message.content) + "\n" + "\n". join(link_ne) )
-                   print("Enviado Else: " + filtro2(message.content) + "\n" + "\n". join(link_ne) )
+                tg.sendMessage(TELEGRAM_CHAT_ID,  filtro(message.content), parse_mode='Markdown')
+                print("Enviado M: " + filtro(message.content))
             except:
                    print("Não enviado 'else'")
         
