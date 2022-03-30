@@ -12,7 +12,7 @@ def manga_itens(itens):
         response = urlopen(req)
         html = response.read()
         soup = BeautifulSoup(html,'html.parser')
-        seconds = 10
+        seconds = 5
         sleep(seconds)
         itens = soup.find('div', class_="page-content-listing item-default").find('div', class_="page-listing-item").find('div', class_="row row-eq-height").find('div', class_="col-12 col-md-6 badge-pos-2").find('div', class_="page-item-detail manga").find('h3', class_="h5").find('a')
         return itens
@@ -26,27 +26,19 @@ def manga_caplk(link):
             return link
 
 def filtro(messagefilted):
-                try:
-                    if  re.findall('<@&'+ '[0-9]+' + '>',messagefilted):
-                        messagefilted = re.sub('<@&'+ '[0-9]+' + '>','' , messagefilted)
-                        return messagefilted
-                except:
+            try:    
+                # rege = r"""[<#|<@&[0-9]+[>]"""
+                regex = r"""[<@&]+[0-9]+[>]|[<#].[0-9]+[>]"""
+                rege1 = r"""[<@&]+[0-9]+[>]"""
+                rege2 = r"""[<#].[0-9]+[>]"""
+                subst = "tag"
+                subst1 = ""
+                if re.finditer(regex, messagefilted, re.MULTILINE | re.IGNORECASE | re.VERBOSE | re.DOTALL | re.UNICODE):   
+                    messagefilted = re.sub(rege1, subst1, messagefilted, 0, re.MULTILINE | re.IGNORECASE | re.VERBOSE | re.DOTALL | re.UNICODE)
+                    messagefilted = re.sub(rege2, subst, messagefilted, 0, re.MULTILINE | re.IGNORECASE | re.VERBOSE | re.DOTALL | re.UNICODE)
                     return messagefilted
-
-                try:
-                    if re.findall(r"[<#[0-9]+[>]",messagefilted):
-                       messagefilted = re.sub(r"[<#[0-9]+[>]" ,'tags',messagefilted)
-                       return messagefilted
-                except:
-                    return messagefilted
-                try:
-                    if re.search('[**]+' or '[**]',messagefilted):
-                        messagefilted = re.sub('[**]','', messagefilted)
-                        return messagefilted
-                except:
-                    return messagefilted
-                return messagefilted
-
+            except:
+                return messagefilted 
 def filtro2(filtro2):
     try:
         filtro2 = re.sub('[**]+','', filtro(filtro2))
