@@ -40,6 +40,7 @@ async def on_message(message):
                    print("Enviado Else: " + filtro2(message.content) + "\n" + "\n". join(link_ne) )
             except:
                    print("Não enviado 'else'")
+        
 
 def main():
     print("Running, waiting for messages...")
