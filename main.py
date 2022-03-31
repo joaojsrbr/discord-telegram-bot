@@ -19,14 +19,14 @@ async def on_message(message):
                 attachers += f"{attachment}"
             
             try:
-                   tg.send_photo(TELEGRAM_CHAT_ID,  f"{attachment}" , caption=filtro(message.content), parse_mode='Markdown' )
+                   tg.send_photo(TELEGRAM_CHAT_ID,  f"{attachment}" , caption=filtro(message.content), parse_mode='Markdown',  )
                    print("Enviado F-M: " + filtro(message.content) + "\n " + f"{attachment}" )
             except:
                    print("Não enviado 'If'")
 
         else:                      
             try:
-                tg.sendMessage(TELEGRAM_CHAT_ID,  filtro(message.content), parse_mode='Markdown')
+                tg.sendMessage(TELEGRAM_CHAT_ID,  filtro(message.content), parse_mode='Markdown',disable_web_page_preview=True)
                 print("Enviado M: " + filtro(message.content))
             except:
                    print("Não enviado 'else'")
